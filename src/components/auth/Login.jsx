@@ -25,7 +25,6 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm();
-  console.log(errors);
 
   async function handleLogin(data) {
     const succeeded = await login({
