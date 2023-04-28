@@ -12,6 +12,7 @@ export const PROTECTED = "/protected";
 export const DASHBOARD = "/protected/dashboard";
 
 export const USERS = "/protected/user";
+export const PROFILE = "/protected/profile/:uid";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: USERS,
         element: "USERS",
+      },
+      {
+        path: PROFILE,
+        element: "User profile for a specific ID",
       },
     ],
   },
