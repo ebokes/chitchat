@@ -11,6 +11,8 @@ export const REGISTER = "/register";
 export const PROTECTED = "/protected";
 export const DASHBOARD = "/protected/dashboard";
 
+export const USERS = "/protected/user";
+
 const router = createBrowserRouter([
   {
     path: ROOT,
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: DASHBOARD,
         element: <Dashboard />,
+      },
+      {
+        path: USERS,
+        element: "USERS",
       },
     ],
   },
