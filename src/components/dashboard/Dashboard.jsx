@@ -2,8 +2,9 @@ import { Box, Button, HStack, Heading, Textarea } from "@chakra-ui/react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import TextareaAutoSize from "react-textarea-autosize";
-import { useAddPost } from "../../hooks/posts";
+import { useAddPost, usePosts } from "../../hooks/posts";
 import { useAuth } from "../../hooks/auth";
+import PostsList from "../post/PostsList";
 
 function NewPost() {
   const { register, handleSubmit, reset } = useForm();
@@ -43,9 +44,14 @@ function NewPost() {
 }
 
 const Dashboard = () => {
+  const { posts, isLoading } = usePosts();
+
+  if (isLoading) return "Loading posts...";
+
   return (
     <>
       <NewPost />
+      <PostsList posts={posts} />
     </>
   );
 };
