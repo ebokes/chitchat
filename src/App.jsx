@@ -4,6 +4,7 @@ import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import Layout from "./components/layout";
 import Comments from "./components/comments";
+import Profile from "./components/profile/Profile";
 
 export const ROOT = "/";
 export const LOGIN = "/login";
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: PROFILE,
-        element: "User profile for a specific ID",
+        element: <Profile />,
       },
       {
         path: COMMENTS,
