@@ -13,10 +13,16 @@
     "@chakra-ui/react": "^2.6.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "date-fns": "^2.30.0",
+    "firebase": "^9.20.0",
     "framer-motion": "^10.12.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0"
+    "react-firebase-hooks": "^5.1.1",
+    "react-hook-form": "^7.43.9",
+    "react-icons": "^4.8.0",
+    "react-router-dom": "^6.10.0",
+    "react-textarea-autosize": "^8.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
