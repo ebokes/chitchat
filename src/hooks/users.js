@@ -1,6 +1,9 @@
-import { useDocumentData } from "react-firebase-hooks/firestore";
+import {
+  useCollectionData,
+  useDocumentData,
+} from "react-firebase-hooks/firestore";
 import { db, storage } from "../lib/firebase";
-import { doc, query, updateDoc } from "firebase/firestore";
+import { collection, doc, query, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
@@ -10,6 +13,11 @@ export function useUser(id) {
   const q = query(doc(db, "users", id));
   const [user, isLoading] = useDocumentData(q);
   return { user, isLoading };
+}
+
+export function useUsers() {
+  const [users, isLoading] = useCollectionData(collection(db, "users"));
+  return { users, isLoading };
 }
 
 export function useUpdateAvatar(uid) {
