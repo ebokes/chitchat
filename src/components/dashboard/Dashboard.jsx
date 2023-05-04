@@ -33,10 +33,10 @@ function NewPost() {
           resize="none"
           mt="5"
           placeholder="Create a new post..."
-          minRows={3}
+          minrows={3}
           {...register("text", { required: true })}
-          isLoading={authLoading || addingPost}
-          loadingText="Loading"
+          isloading={authLoading.toString() || addingPost.toString()}
+          loadingtext="Loading"
         />
       </form>
     </Box>

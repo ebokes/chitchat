@@ -3,6 +3,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import Layout from "./components/layout";
+import Comments from "./components/comments";
 
 export const ROOT = "/";
 export const LOGIN = "/login";
@@ -12,7 +13,8 @@ export const PROTECTED = "/protected";
 export const DASHBOARD = "/protected/dashboard";
 
 export const USERS = "/protected/user";
-export const PROFILE = "/protected/profile/:uid";
+export const PROFILE = "/protected/profile/:id";
+export const COMMENTS = "/protected/comments/:id";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: PROFILE,
         element: "User profile for a specific ID",
+      },
+      {
+        path: COMMENTS,
+        element: <Comments />,
       },
     ],
   },
