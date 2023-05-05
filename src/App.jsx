@@ -2,10 +2,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
-import Layout from "./components/layout";
 import Comments from "./components/comments";
 import Profile from "./components/profile/Profile";
 import Users from "./components/users/Users";
+import Home from "./components/home/Home";
+import AppOutlet from "./components/layout/AppOutlet";
 
 export const ROOT = "/";
 export const LOGIN = "/login";
@@ -21,7 +22,7 @@ export const COMMENTS = "/protected/comments/:id";
 const router = createBrowserRouter([
   {
     path: ROOT,
-    element: "root",
+    element: <Home />,
   },
   {
     path: LOGIN,
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: PROTECTED,
-    element: <Layout />,
+    element: <AppOutlet />,
     children: [
       {
         path: DASHBOARD,
