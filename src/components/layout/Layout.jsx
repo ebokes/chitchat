@@ -20,15 +20,14 @@ const Layout = () => {
   if (isLoading) return "loading...";
 
   return (
-    <>
-      <Navbar />
-      <Flex pt="16" pb="12" mx="auto" w="full" maxW="1200px">
-        <Box w="900px">
-          <Outlet />
-        </Box>
-        <Sidebar />
-      </Flex>
-    </>
+    // <>
+    <Flex pt="16" pb="12" mx="auto" w="full" maxW="1200px">
+      <Box w="900px">
+        <Outlet />
+      </Box>
+      <Sidebar />
+    </Flex>
+    // </>
   );
 };
 
