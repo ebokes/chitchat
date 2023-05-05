@@ -9,6 +9,7 @@ function UsernameButton({ user }) {
       to={`${PROTECTED}/profile/${user.id}`}
       colorScheme="teal"
       variant="link"
+      justifyContent="flex-start"
     >
       {user.username}
     </Button>
