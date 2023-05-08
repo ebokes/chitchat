@@ -13,7 +13,8 @@ import {
 import chitchatLogo from "../../assets/chitchatIcon.svg";
 import { Link as RouterLink } from "react-router-dom";
 import { LOGIN, REGISTER, ROOT } from "../../App";
-import lady from "../../assets/lady2.jpg";
+import friends from "../../assets/lady2.jpg";
+import NavReloaded from "../NavReloaded";
 
 const HomeNav = () => {
   return (
@@ -57,9 +58,14 @@ const HomeNav = () => {
 };
 
 const Home = () => {
+  const credentials = [
+    { title: "Home", route: ROOT },
+    { title: "Login", route: LOGIN },
+    { title: "Signup", route: REGISTER },
+  ];
   return (
     <Box bgGradient="linear(to-br, teal.500 40%, teal.300)">
-      <HomeNav />
+      <NavReloaded navlinks={credentials} />
       <Flex
         py="20"
         h="100vh"
@@ -111,7 +117,7 @@ const Home = () => {
         </VStack>
         <Box display={{ base: "none", md: "block" }} ml="10px">
           <Image
-            src={lady}
+            src={friends}
             w="450px"
             h="500px"
             objectFit="cover"
