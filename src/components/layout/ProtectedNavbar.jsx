@@ -42,6 +42,8 @@ function ProtectedNavbar() {
       width="full"
       zIndex="3"
       boxShadow="md"
+      borderBottom="1px solid"
+      borderBottomColor="teal.400"
     >
       <Box>
         <Link

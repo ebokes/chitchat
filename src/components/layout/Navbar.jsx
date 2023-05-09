@@ -14,7 +14,6 @@ import {
   VStack,
   HStack,
   Button,
-  textDecoration,
 } from "@chakra-ui/react";
 import { FaBars } from "react-icons/fa";
 import chitchatLogo from "../../assets/chitchatIcon.svg";
@@ -39,6 +38,8 @@ function NavReloaded({ navlinks }) {
       pos="fixed"
       width="full"
       zIndex="3"
+      borderBottom="1px solid"
+      borderBottomColor="teal.400"
     >
       <Box>
         <Link
