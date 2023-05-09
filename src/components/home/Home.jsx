@@ -10,56 +10,20 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import chitchatLogo from "../../assets/chitchatIcon.svg";
 import { Link as RouterLink } from "react-router-dom";
 import { LOGIN, REGISTER, ROOT } from "../../App";
-import lady from "../../assets/lady2.jpg";
-
-const HomeNav = () => {
-  return (
-    <VStack
-      shadow="sm"
-      pos="fixed"
-      width="full"
-      borderTop="6px solid"
-      borderTopColor="teal.400"
-      height="16"
-      zIndex="3"
-      justify="center"
-      bg="white"
-    >
-      <Flex px="4" w="full" align="center" maxW="1200px">
-        <Link
-          display="flex"
-          gap={1}
-          color="teal"
-          as={RouterLink}
-          to={ROOT}
-          fontWeight="bold"
-        >
-          <Image src={chitchatLogo} w={6} />
-          ChitChat
-        </Link>
-        <HStack ml="auto" gap={5}>
-          <Link as={RouterLink} color="teal" to={ROOT} fontWeight="bold">
-            Home
-          </Link>
-          <Link as={RouterLink} to={LOGIN} fontWeight="medium" color="teal">
-            Login
-          </Link>
-          <Button as={RouterLink} to={REGISTER} colorScheme="teal">
-            Sign up
-          </Button>
-        </HStack>
-      </Flex>
-    </VStack>
-  );
-};
+import friends from "../../assets/lady2.jpg";
+import Navbar from "../layout/Navbar";
 
 const Home = () => {
+  const credentials = [
+    { title: "Home", route: ROOT },
+    { title: "Login", route: LOGIN },
+    { title: "Signup", route: REGISTER },
+  ];
   return (
     <Box bgGradient="linear(to-br, teal.500 40%, teal.300)">
-      <HomeNav />
+      <Navbar navlinks={credentials} />
       <Flex
         py="20"
         h="100vh"
@@ -111,7 +75,7 @@ const Home = () => {
         </VStack>
         <Box display={{ base: "none", md: "block" }} ml="10px">
           <Image
-            src={lady}
+            src={friends}
             w="450px"
             h="500px"
             objectFit="cover"
