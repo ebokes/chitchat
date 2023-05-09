@@ -1,27 +1,46 @@
-import { Button, Flex, HStack, Image, Link } from "@chakra-ui/react";
-import { NavLink as RouterLink } from "react-router-dom";
-import { LOGIN, PROTECTED, REGISTER, ROOT } from "../../App";
-import chichatIcon from "../../assets/chitchatIcon.svg";
-import { useAuth } from "../../hooks/auth";
-import { useLogout } from "../../hooks/auth";
+import { Fragment, useState } from "react";
+import {
+  Flex,
+  Box,
+  IconButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  Image,
+  Link,
+  VStack,
+  HStack,
+  Button,
+  textDecoration,
+} from "@chakra-ui/react";
+import { FaBars } from "react-icons/fa";
+import chitchatLogo from "../../assets/chitchatIcon.svg";
+import { Link as RouterLink } from "react-router-dom";
+import { ROOT } from "../../App";
 
-export default function Navbar() {
-  const { logout, isLoading } = useLogout();
-  const { user } = useAuth();
+function NavReloaded({ navlinks }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDrawer = () => setIsOpen(!isOpen);
 
   return (
     <Flex
-      shadow="sm"
-      pos="fixed"
-      width="full"
+      bg="white"
+      w="100%"
+      px={4}
+      py={3}
+      justifyContent="space-between"
+      alignItems="center"
       borderTop="6px solid"
       borderTopColor="teal.400"
-      height="16"
+      pos="fixed"
+      width="full"
       zIndex="3"
-      justify="center"
-      bg="white"
     >
-      <Flex px="4" w="full" align="center" maxW="1200px">
+      <Box>
         <Link
           display="flex"
           gap={1}
@@ -29,90 +48,77 @@ export default function Navbar() {
           as={RouterLink}
           to={ROOT}
           fontWeight="bold"
+          _hover={{ textDecoration: "none" }}
         >
-          <Image src={chichatIcon} w={6} />
+          <Image src={chitchatLogo} w={6} />
           ChitChat
         </Link>
+      </Box>
+      <Box display={{ base: "none", md: "block" }}>
         <HStack ml="auto" gap={5}>
-          {user && (
-            <>
-              <Link
-                as={RouterLink}
-                display="flex"
-                color="teal"
-                to={`${PROTECTED}/Dashboard`}
-                fontWeight="bold"
-                activeClassName="active"
-                sx={{
-                  "&.active-link": {
-                    bg: "blue.500",
-                    color: "white",
-                    fontWeight: "bold",
-                    border: "2px solid",
-                    borderColor: "blue.500",
-                    borderRadius: "md",
-                    p: 2,
-                  },
-                }}
-              >
-                Timeline
-              </Link>
-              <Link
-                as={RouterLink}
-                display="flex"
-                color="teal"
-                to={`${PROTECTED}/Profile/${user.id}`}
-                fontWeight="bold"
-                // activeClassName="active"
-              >
-                Profile
-              </Link>
-              <Button
-                ml="auto"
-                colorScheme="teal"
-                size="sm"
-                onClick={logout}
-                isLoading={isLoading}
-              >
-                Logout
-              </Button>
-            </>
-          )}
-          {!user && (
-            <>
-              <Link
-                as={RouterLink}
-                display="flex"
-                color="teal"
-                to={ROOT}
-                fontWeight="bold"
-              >
-                Home
-              </Link>
-              <Link
-                as={RouterLink}
-                to={LOGIN}
-                fontWeight="medium"
-                fontSize="sm"
-                ml="auto"
-                color="teal"
-                _hover={{ color: "teal.600" }}
-              >
-                Login
-              </Link>
-              <Button
-                as={RouterLink}
-                to={REGISTER}
-                colorScheme="teal"
-                size="sm"
-                ml={2}
-              >
-                Sign up
-              </Button>
-            </>
-          )}
+          {navlinks.map((navlink, index) => (
+            <Fragment key={navlink.title}>
+              {index === navlinks.length - 1 ? (
+                <Button
+                  as={RouterLink}
+                  to={navlink.route}
+                  colorScheme="teal"
+                  onClick={toggleDrawer}
+                >
+                  {navlink.title}
+                </Button>
+              ) : (
+                <Link
+                  key={navlink.title}
+                  as={RouterLink}
+                  color="teal"
+                  to={navlink.route}
+                  fontWeight="bold"
+                  _hover={{ textDecoration: "none" }}
+                >
+                  {navlink.title}
+                </Link>
+              )}
+            </Fragment>
+          ))}
         </HStack>
-      </Flex>
+      </Box>
+      <Box display={{ base: "block", md: "none" }}>
+        <IconButton
+          aria-label="Open menu"
+          size="md"
+          fontSize="lg"
+          variant="ghost"
+          icon={<FaBars />}
+          onClick={toggleDrawer}
+          color="teal"
+        />
+      </Box>
+      <Drawer placement="right" onClose={toggleDrawer} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton color="teal" />
+          <DrawerHeader color="teal">Menu</DrawerHeader>
+          <DrawerBody>
+            <VStack ml="auto" gap={5}>
+              {navlinks.map((navlink) => (
+                <Link
+                  key={navlink.route}
+                  onClick={toggleDrawer}
+                  as={RouterLink}
+                  color="teal"
+                  to={navlink.route}
+                  _hover={{ textDecoration: "none" }}
+                >
+                  {navlink.title}
+                </Link>
+              ))}
+            </VStack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </Flex>
   );
 }
+
+export default NavReloaded;

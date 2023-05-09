@@ -6,7 +6,7 @@ import Comments from "./components/comments";
 import Profile from "./components/profile/Profile";
 import Users from "./components/users/Users";
 import Home from "./components/home/Home";
-import AppOutlet from "./components/layout/AppOutlet";
+import Layout from "./components/layout/Layout";
 
 export const ROOT = "/";
 export const LOGIN = "/login";
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: PROTECTED,
-    element: <AppOutlet />,
+    element: <Layout />,
     children: [
       {
         path: DASHBOARD,
