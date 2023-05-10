@@ -117,6 +117,7 @@ function ProtectedNavbar() {
                 display="flex"
                 color="teal"
                 to={`${PROTECTED}/Dashboard`}
+                onClick={toggleDrawer}
                 _hover={{ textDecoration: "none" }}
               >
                 Timeline
@@ -126,6 +127,7 @@ function ProtectedNavbar() {
                 display="flex"
                 color="teal"
                 to={`${PROTECTED}/Profile/${user?.id}`}
+                onClick={toggleDrawer}
                 _hover={{ textDecoration: "none" }}
               >
                 Profile
