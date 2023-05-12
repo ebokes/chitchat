@@ -12,7 +12,7 @@ const NotFound = () => {
         </Center>
       </Box>
       <Box maxW="1200px" mx={{ base: 2, md: 5 }}>
-        <Heading as={h2} fontSize={30} color="teal.600">
+        <Heading as="h2" fontSize={30} color="teal.600">
           Error 404-Page NOT Found
         </Heading>
         <Text fontSize={16}>
