@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { LOGIN, REGISTER, ROOT } from "../../App";
-import friends from "../../assets/lady2.jpg";
+import friends from "../../assets/friends.webp";
 import Navbar from "../layout/Navbar";
 
 const Home = () => {
