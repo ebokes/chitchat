@@ -7,6 +7,8 @@ import Profile from "./components/profile/Profile";
 import Users from "./components/users/Users";
 import Home from "./components/home/Home";
 import Layout from "./components/layout/Layout";
+import NotFound from "./components/error/NotFound";
+import ErrorBoundary from "./components/error/ErrorBoundary";
 
 export const ROOT = "/";
 export const LOGIN = "/login";
@@ -22,37 +24,77 @@ export const COMMENTS = "/protected/comments/:id";
 const router = createBrowserRouter([
   {
     path: ROOT,
-    element: <Home />,
+    element: (
+      <ErrorBoundary>
+        <Home />,
+      </ErrorBoundary>
+    ),
   },
   {
     path: LOGIN,
-    element: <Login />,
+    element: (
+      <ErrorBoundary>
+        <Login />
+      </ErrorBoundary>
+    ),
   },
   {
     path: REGISTER,
-    element: <Register />,
+    element: (
+      <ErrorBoundary>
+        <Register />
+      </ErrorBoundary>
+    ),
   },
   {
     path: PROTECTED,
-    element: <Layout />,
+    element: (
+      <ErrorBoundary>
+        <Layout />
+      </ErrorBoundary>
+    ),
     children: [
       {
         path: DASHBOARD,
-        element: <Dashboard />,
+        element: (
+          <ErrorBoundary>
+            <Dashboard />
+          </ErrorBoundary>
+        ),
       },
       {
         path: USERS,
-        element: <Users />,
+        element: (
+          <ErrorBoundary>
+            <Users />
+          </ErrorBoundary>
+        ),
       },
       {
         path: PROFILE,
-        element: <Profile />,
+        element: (
+          <ErrorBoundary>
+            <Profile />
+          </ErrorBoundary>
+        ),
       },
       {
         path: COMMENTS,
-        element: <Comments />,
+        element: (
+          <ErrorBoundary>
+            <Comments />
+          </ErrorBoundary>
+        ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: (
+      <ErrorBoundary>
+        <NotFound />
+      </ErrorBoundary>
+    ),
   },
 ]);
 
