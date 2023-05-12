@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Skeleton, SkeletonCircle, Text } from "@chakra-ui/react";
 import Avatar from "../../components/profile/Avatar";
 import { formatDistanceToNow } from "date-fns";
 import { useUser } from "../../hooks/users";
@@ -8,8 +8,6 @@ function Header({ post }) {
   const { uid, date } = post;
   const { user, isLoading } = useUser(uid);
 
-  if (isLoading) return "Loading...";
-
   return (
     <Flex
       alignItems="center"
@@ -18,14 +16,25 @@ function Header({ post }) {
       p="3"
       bg="gray.50"
     >
-      <Avatar user={user} size="md" />
-
-      <Box ml="4">
-        <UsernameButton user={user} />
-        <Text fontSize="sm" color="gray.500">
-          {formatDistanceToNow(date)} ago
-        </Text>
-      </Box>
+      {isLoading ? (
+        <>
+          <SkeletonCircle size="48px" />
+          <Box ml="4">
+            <Skeleton h="18px" w="78px" mb="5px" />
+            <Skeleton h="15px" w="66px" />
+          </Box>
+        </>
+      ) : (
+        <>
+          <Avatar user={user} size="md" />
+          <Box ml="4">
+            <UsernameButton user={user} />
+            <Text fontSize="sm" color="gray.500">
+              {formatDistanceToNow(date)} ago
+            </Text>
+          </Box>
+        </>
+      )}
     </Flex>
   );
 }

@@ -5,6 +5,7 @@ import { useAuth } from "../../hooks/auth";
 import Sidebar from "./Sidebar";
 import { Box, Flex } from "@chakra-ui/react";
 import ProtectedNavbar from "./ProtectedNavbar";
+import Spinner from "./Spinner";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -17,7 +18,7 @@ const Layout = () => {
     }
   }, [pathname, user, isLoading]);
 
-  if (isLoading) return "loading...";
+  if (isLoading) return <Spinner />;
 
   return (
     <>
