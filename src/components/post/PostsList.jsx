@@ -1,17 +1,25 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Center, Spinner, Text } from "@chakra-ui/react";
 import Post from "./Post";
 
-const PostsList = ({ posts }) => {
+const PostsList = ({ posts, isLoading }) => {
   return (
-    <Box px="4" align="center">
-      {posts?.length === 0 ? (
-        <Text textAlign="center" fontSize="xl">
-          No posts yet... Feeling a little lonely here.
-        </Text>
+    <>
+      {isLoading ? (
+        <Center>
+          <Spinner color="teal" size="lg" />
+        </Center>
       ) : (
-        posts?.map((post) => <Post key={post.id} post={post} />)
+        <Box px="4" align="center">
+          {posts?.length === 0 ? (
+            <Text textAlign="center" fontSize="xl">
+              No posts yet... Feeling a little lonely here.
+            </Text>
+          ) : (
+            posts?.map((post) => <Post key={post.id} post={post} />)
+          )}
+        </Box>
       )}
-    </Box>
+    </>
   );
 };
 export default PostsList;

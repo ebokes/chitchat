@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Input } from "@chakra-ui/react";
+import { Box, Button, Flex, Input, Spinner } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/auth";
 import { useAddComment } from "../../hooks/comments";
@@ -18,7 +18,7 @@ export default function NewComment({ post }) {
     reset();
   }
 
-  if (authLoading) return "Loading...";
+  if (authLoading) return "";
 
   return (
     <Box maxW="600px" mx="auto" py="6">

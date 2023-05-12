@@ -64,7 +64,7 @@ function NavReloaded({ navlinks }) {
                   as={RouterLink}
                   to={navlink.route}
                   colorScheme="teal"
-                  onClick={toggleDrawer}
+                  // onClick={toggleDrawer}
                 >
                   {navlink.title}
                 </Button>

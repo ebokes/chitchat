@@ -1,4 +1,4 @@
-import { Box, Flex, IconButton, Text } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Spinner, Text } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
 import Avatar from "../profile/Avatar";
 import UsernameButton from "../profile/UsernameButton";
@@ -13,7 +13,7 @@ export default function Comment({ comment }) {
   const { user: authUser, isLoading: authLoading } = useAuth();
   const { deleteComment, isLoading: deleteLoading } = useDeleteComment(id);
 
-  if (userLoading) return "Loading...";
+  if (userLoading) return <Spinner color="teal" size="lg" />;
 
   return (
     <Box px="4" py="2" maxW="600px" mx="auto" textAlign="left">

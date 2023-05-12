@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
-import Comments from "./components/comments";
+import Comments from "./components/comments/Comments";
 import Profile from "./components/profile/Profile";
 import Users from "./components/users/Users";
 import Home from "./components/home/Home";

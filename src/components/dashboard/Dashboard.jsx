@@ -46,12 +46,10 @@ function NewPost() {
 const Dashboard = () => {
   const { posts, isLoading } = usePosts();
 
-  if (isLoading) return "Loading posts...";
-
   return (
     <>
       <NewPost />
-      <PostsList posts={posts} />
+      <PostsList posts={posts} isLoading={isLoading} />
     </>
   );
 };

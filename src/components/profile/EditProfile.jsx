@@ -10,14 +10,12 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
-// import { useAuth } from "hooks/auth";
-// import { useUpdateAvatar } from "hooks/users";
 import Avatar from "./Avatar";
 import { useAuth } from "../../hooks/auth";
 import { useUpdateAvatar } from "../../hooks/users";
 
 export default function EditProfile({ isOpen, onClose }) {
-  const { user, isLoading: authLoading } = useAuth();
+  const { user } = useAuth();
   const {
     setFile,
     updateAvatar,
@@ -28,8 +26,6 @@ export default function EditProfile({ isOpen, onClose }) {
   function handleChange(e) {
     setFile(e.target.files[0]);
   }
-
-  if (authLoading) return "Loading...";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
